@@ -1,0 +1,6 @@
+---
+  priority: 1
+  error: temporarily_unavailable
+  title: Planned Maintenance
+  message: We are currently undergoing planned maintenance.
+  status_code: 503

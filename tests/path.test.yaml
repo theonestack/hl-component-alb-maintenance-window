@@ -1,0 +1,6 @@
+test_metadata:
+  type: config
+  name: path
+  description: Custom path test
+
+path: '/test'

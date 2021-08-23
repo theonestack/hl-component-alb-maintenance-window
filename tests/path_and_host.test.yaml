@@ -1,0 +1,7 @@
+test_metadata:
+  type: config
+  name: path_and_host
+  description: Custom path and host test
+
+path: '/test'
+host: 'test.*'
