@@ -45,7 +45,7 @@ CloudFormation do
       'Type': 'fixed-response',
       'FixedResponseConfig': {
         'MessageBody': FnSub(body.to_json),
-        'StatusCode': '503',
+        'StatusCode': status_code,
         'ContentType': 'application/json'
       }
     }
