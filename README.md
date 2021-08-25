@@ -21,6 +21,8 @@ kurgan add alb-maintenance-window
 Default configs [here](./alb-maintenance-window.config.yaml)
 
 ```yaml
+priority: 1
+
 path: '/' # Required if host is not specified
 host: '*.*' # Required if path is not specified
 
