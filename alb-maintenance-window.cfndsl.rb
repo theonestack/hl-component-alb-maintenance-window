@@ -1,21 +1,12 @@
 CloudFormation do
 
-  export      = external_parameters.fetch(:export_name, external_parameters[:component_name])
-  path        = external_parameters.fetch(:path, false)
-  host        = external_parameters.fetch(:host, false)
-  priority    = external_parameters.fetch(:priority, 1)
-  error       = external_parameters.fetch(:error)
-  status_code = external_parameters.fetch(:status_code)
-  name        = external_parameters.fetch(:name, "MaintenanceWindowRule#{priority}")
-  title       = external_parameters.fetch(:title)
-  message     = external_parameters.fetch(:message)
-  body        = external_parameters.fetch(:body, {
-    'code': status_code,
-    'error': error,
-    'title': title,
-    'message': message,
-    'expires': '${ExpireDate}'
-  })
+  export       = external_parameters.fetch(:export_name, external_parameters[:component_name])
+  path         = external_parameters.fetch(:path, false)
+  host         = external_parameters.fetch(:host, false)
+  priority     = external_parameters.fetch(:priority)
+  status_code  = external_parameters.fetch(:status_code)
+  content_type = external_parameters.fetch(:content_type)
+  body         = external_parameters.fetch(:body)
 
   conditions = []
 
@@ -44,12 +35,14 @@ CloudFormation do
     {
       'Type': 'fixed-response',
       'FixedResponseConfig': {
-        'MessageBody': FnSub(body.to_json),
+        'MessageBody': FnSub(body),
         'StatusCode': status_code,
-        'ContentType': 'application/json'
+        'ContentType': content_type
       }
     }
   ]
+
+  name = "MaintenanceWindowRule#{priority}"
 
   ElasticLoadBalancingV2_ListenerRule(name) do
     Actions actions

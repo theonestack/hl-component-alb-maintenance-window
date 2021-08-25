@@ -5,7 +5,6 @@ CfhighlanderTemplate do
     ComponentParam 'EnvironmentName'
     ComponentParam 'EnvironmentVersion'
     ComponentParam 'ListenerARN'
-    ComponentParam 'ExpireDate'
   end
 
 end
