@@ -1,0 +1,23 @@
+test_metadata:
+  type: config
+  name: body
+  description: Custom body test
+
+test_parameters:
+  StatusCode: 503
+  ExpireDate: '2021-08-25 12:00:00'
+
+path: '/'
+
+status_code:
+  Ref: StatusCode
+
+content_type: application/json
+body: |-
+  {
+    "code": "${StatusCode}",
+    "error": temporarily_unavailable,
+    "title": Planned Maintenance,
+    "message": We are currently undergoing planned maintenance.,
+    "expires": "${ExpireDate}"
+  }
