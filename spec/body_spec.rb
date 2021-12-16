@@ -10,11 +10,11 @@ describe 'compiled component' do
 
   let(:template) { YAML.load_file("#{File.dirname(__FILE__)}/../out/tests/body/alb-maintenance-window.compiled.yaml") }
 
-  context 'Resource MaintenanceWindowRule1' do
+  context 'Resource MaintenanceWindowRule' do
 
-    let(:properties) { template["Resources"]["MaintenanceWindowRule1"]["Properties"] }
+    let(:properties) { template["Resources"].values[0]["Properties"] }
 
-    it 'has property Actions' do
+    it 'Expected body' do
 
       RSpec.describe properties["Actions"][0]["FixedResponseConfig"]["MessageBody"]["Fn::Sub"] do
         it { is_expected.to match(/StatusCode/) }
