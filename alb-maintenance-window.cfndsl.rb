@@ -42,6 +42,8 @@ CloudFormation do
     }
   ]
 
+  name = "MaintenanceWindowRule"
+  
   ElasticLoadBalancingV2_ListenerRule(name) do
     Actions actions
     Conditions conditions
