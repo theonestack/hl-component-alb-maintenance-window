@@ -42,18 +42,11 @@ CloudFormation do
     }
   ]
 
-  name = "MaintenanceWindowRule#{priority}"
-
-  ElasticLoadBalancingV2_ListenerRule(name) do
+  ElasticLoadBalancingV2_ListenerRule('MaintenanceWindowRule') do
     Actions actions
     Conditions conditions
     ListenerArn Ref('ListenerARN')
     Priority priority
-  end
-
-  Output(:Rule) do
-    Value(Ref(name))
-    Export FnSub("${EnvironmentName}-#{name}")
   end
 
 end

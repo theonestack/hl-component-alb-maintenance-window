@@ -1,0 +1,12 @@
+test_metadata:
+  type: config
+  name: priority
+  description: Custom priority test
+
+test_parameters:
+  Priority: 1
+
+priority:
+  Ref: Priority
+
+path: '/'

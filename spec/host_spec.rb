@@ -10,11 +10,11 @@ describe 'compiled component' do
 
   let(:template) { YAML.load_file("#{File.dirname(__FILE__)}/../out/tests/host/alb-maintenance-window.compiled.yaml") }
 
-  context 'Resource MaintenanceWindowRule1' do
+  context 'Resource MaintenanceWindowRule' do
 
-    let(:properties) { template["Resources"]["MaintenanceWindowRule1"]["Properties"] }
+    let(:properties) { template["Resources"].values[0]["Properties"] }
 
-    it 'has property Conditions' do
+    it 'Expected host' do
       expect(properties["Conditions"][0]["Field"]).to eq('host-header')
       expect(properties["Conditions"][0]["Values"][0]).to eq('test.*')
     end
