@@ -1,5 +1,3 @@
-require 'securerandom'
-
 CloudFormation do
 
   export       = external_parameters.fetch(:export_name, external_parameters[:component_name])
@@ -44,18 +42,11 @@ CloudFormation do
     }
   ]
 
-  name = "MaintenanceWindowRule#{SecureRandom.hex}"
-
-  ElasticLoadBalancingV2_ListenerRule(name) do
+  ElasticLoadBalancingV2_ListenerRule('MaintenanceWindowRule') do
     Actions actions
     Conditions conditions
     ListenerArn Ref('ListenerARN')
     Priority priority
-  end
-
-  Output(:Rule) do
-    Value(Ref(name))
-    Export FnSub("${EnvironmentName}-#{name}")
   end
 
 end
